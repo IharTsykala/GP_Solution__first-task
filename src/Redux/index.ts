@@ -1,10 +1,7 @@
 import { combineReducers } from "redux"
 
-import { photoReducer } from "./store/photo/photo.reducer"
-
+import { newsReducer } from "./store/news/news.reducer"
 
 export default combineReducers({
-
-  photo: photoReducer,
-
+  news: newsReducer,
 })

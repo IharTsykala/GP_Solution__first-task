@@ -1,4 +1,4 @@
-export interface photoInterface {
+export interface newsInterface {
   namePhoto: string;
   photoIMG: string;
 }
