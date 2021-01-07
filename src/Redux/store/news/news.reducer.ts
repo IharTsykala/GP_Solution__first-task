@@ -4,10 +4,12 @@ import { Action } from "../../interfacesAction/action.interface"
 
 export interface State {  
   catalogNews: [newsInterface];
+  countNewsID: number
 }
 
 const initialState: State = {  
   catalogNews: [{} as newsInterface],
+  countNewsID: 0,
 }
 
 export const newsReducer = (
@@ -19,6 +21,11 @@ export const newsReducer = (
     return {
       ...state,
       catalogNews: action.payload
+    }
+  case ActionTypes.SET_COUNT_NEWS_ID:
+    return {
+      ...state,
+      countNewsID: action.payload
     }
   default:
     return state

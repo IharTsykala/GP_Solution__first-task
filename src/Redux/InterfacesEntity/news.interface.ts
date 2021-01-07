@@ -1,4 +1,7 @@
 export interface newsInterface {
-  namePhoto: string;
-  photoIMG: string;
+  date: string;
+  explanation: string;
+  id: number;
+  title: string;
+  url: string;
 }

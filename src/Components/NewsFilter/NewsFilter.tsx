@@ -16,7 +16,7 @@ const NewsFilter: React.FunctionComponent<NewsFilterProps> = ({
   dispatch,
 }) => {
   useEffect(() => {
-    dispatch(getNews(new Date()))
+    dispatch(getNews(new Date("2020-12-01")))
   }, [dispatch])
 
   return (
