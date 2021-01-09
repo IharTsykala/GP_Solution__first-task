@@ -6,7 +6,6 @@ import {
   setCountNewsID,
 } from "./news.actions"
 import ServiceNews from "../../../services/news"
-import { title } from "process"
 
 const getDate = (objectDate: any) => {
   const year = objectDate.getFullYear()
@@ -19,8 +18,8 @@ const getDate = (objectDate: any) => {
 
 function* getCatalogNews(actions: any) {
   try {
-    const responce = yield ServiceNews.getCatalogNews(getDate(actions.payload))
-    const catalogNews = yield responce.map((item: any, index: number) => {
+    const response = yield ServiceNews.getCatalogNews(getDate(actions.payload))
+    const catalogNews = yield response.map((item: any, index: number) => {
       return {
         title: item.title,
         date: item.date,
@@ -31,7 +30,7 @@ function* getCatalogNews(actions: any) {
     })
     yield put(setNewsInStore(catalogNews))
     yield put(setCountNewsID(catalogNews.length))
-    console.log(responce)
+    console.log(response)
     console.log(catalogNews)
   } catch (e) {
     yield put(getFailureAction(e))

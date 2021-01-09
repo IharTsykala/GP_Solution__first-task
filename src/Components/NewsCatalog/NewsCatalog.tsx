@@ -1,12 +1,5 @@
-import React, { useEffect } from "react"
-import {
-  Box,
-  FormControlLabel,
-  Checkbox,
-  List,
-  Typography,
-  Button,
-} from "@material-ui/core"
+import React from "react"
+import { Box, List, Typography, Button } from "@material-ui/core"
 import { connect } from "react-redux"
 import NewsBox from "../NewsBox/NewsBox"
 // import { useId } from "react-id-generator"

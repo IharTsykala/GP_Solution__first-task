@@ -15,11 +15,12 @@ type NewsBoxProps = {
 }
 
 const NewsBox: React.FunctionComponent<NewsBoxProps> = ({ item, dispatch }) => {
-  const handleClickEdit = (id) => {
-    dispatch(toggleModalNews()), dispatch(setChosenItem(id))
+  const handleClickEdit = (id: number) => {
+    dispatch(toggleModalNews())
+    dispatch(setChosenItem(id))
   }
 
-  const handleClickRemove = (id) => {
+  const handleClickRemove = (id: number) => {
     dispatch(removeItemByID(id))
   }
 

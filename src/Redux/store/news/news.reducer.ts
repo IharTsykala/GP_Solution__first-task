@@ -10,6 +10,7 @@ export interface State {
 }
 
 const initialState: State = {  
+  // eslint-disable-next-line prettier/prettier
   catalogNews: [{} as newsInterface],
   countNewsID: 0,
   modalNews: false,
@@ -48,10 +49,12 @@ export const newsReducer = (
       catalogNews: state.catalogNews.filter(item => item.id !== action.payload)
     }  
   case ActionTypes.EDIT_NEWS_BY_ID:
-    const indexNews = state.catalogNews.findIndex(item=>item.id === action.payload.id)    
+    const indexNews =
+      state.catalogNews.findIndex(item=>item.id === action.payload.id)    
     return {
       ...state,
-      catalogNews: [...state.catalogNews.slice(0, indexNews), action.payload, ...state.catalogNews.slice(indexNews+1)]
+      catalogNews: [...state.catalogNews.slice(0, indexNews),
+        action.payload, ...state.catalogNews.slice(indexNews+1)]
     }
   case ActionTypes.ADD_NEWS_IN_CATALOG:    
     return {

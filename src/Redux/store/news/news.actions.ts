@@ -1,6 +1,5 @@
 import { newsInterface } from "./../../InterfacesEntity/news.interface"
 import { Action } from "../../interfacesAction/action.interface"
-import { newsInterface } from "../../InterfacesEntity/news.interface"
 
 export const ActionTypes = {
   GET_NEWS: "[News] Get news",
