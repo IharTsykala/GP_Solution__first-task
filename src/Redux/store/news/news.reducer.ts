@@ -4,12 +4,16 @@ import { Action } from "../../interfacesAction/action.interface"
 
 export interface State {  
   catalogNews: [newsInterface];
-  countNewsID: number
+  countNewsID: number;
+  modalNews: boolean;
+  chosenNews: newsInterface  
 }
 
 const initialState: State = {  
   catalogNews: [{} as newsInterface],
   countNewsID: 0,
+  modalNews: false,
+  chosenNews: {} as newsInterface,
 }
 
 export const newsReducer = (
@@ -27,6 +31,33 @@ export const newsReducer = (
       ...state,
       countNewsID: action.payload
     }
+  case ActionTypes.TOGGLE_MODAL_NEWS:
+    return {
+      ...state,
+      modalNews: !state.modalNews
+    }
+  case ActionTypes.SET_CHOSEN_ITEM:
+    const chosenItem = state.catalogNews.find(item=>item.id === action.payload)
+    return {
+      ...state,
+      chosenNews: chosenItem || {} as newsInterface
+    }
+  case ActionTypes.REMOVE_ITEM_BY_ID:    
+    return {
+      ...state,
+      catalogNews: state.catalogNews.filter(item => item.id !== action.payload)
+    }  
+  case ActionTypes.EDIT_NEWS_BY_ID:
+    const indexNews = state.catalogNews.findIndex(item=>item.id === action.payload.id)    
+    return {
+      ...state,
+      catalogNews: [...state.catalogNews.slice(0, indexNews), action.payload, ...state.catalogNews.slice(indexNews+1)]
+    }
+  case ActionTypes.ADD_NEWS_IN_CATALOG:    
+    return {
+      ...state,
+      catalogNews:  [...state.catalogNews, action.payload]
+    }  
   default:
     return state
   }

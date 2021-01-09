@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
-import { Box, FormControlLabel, Checkbox } from "@material-ui/core"
+import { Box, FormControlLabel, Checkbox, Toolbar, InputBase } from "@material-ui/core"
+import SearchIcon from "@material-ui/icons/Search"
 // import { getCatalogByDay } from "../../Redux/store/Photo/Photo.actions"
 import { connect } from "react-redux"
 import { getNews } from "../../Redux/store/news/news.actions"
@@ -21,17 +22,27 @@ const NewsFilter: React.FunctionComponent<NewsFilterProps> = ({
 
   return (
     <Box component={"div"} className={"news-filter-container"}>
-      {/* <FormControlLabel
-        control={
-          <Checkbox
-            checked={catalogValue}
-            onChange={handleChange}
-            name="checkedB"
-            color="primary"
-          />
-        }
-        label="Tape"
-      /> */}
+      <Toolbar className={"header__request__container"}>
+        <SearchIcon
+        // className={"header__request__container__search_icon"}
+        // onClick={() => handlerDispatchRequest()}
+        />
+        <InputBase
+        // value={inputValue}
+        // placeholder={
+        //   (!currentRequestId &&
+        //     ((locale === "En" && "Chose request") || "Выберите запрос")) ||
+        //   (locale === "En" && "Input data") ||
+        //   "Введите данные"
+        // }
+        // className={`header__request__container__input ${
+        //   (fontSize && "big_font_size") || "normal_font_size"
+        // }`}
+        // disabled={(!currentRequestId && true) || false}
+        // onInput={(e) => handlerInputSearchBox(e)}
+        // onKeyPress={(e) => handlerDispatchRequest(e)}
+        />
+      </Toolbar>
     </Box>
   )
 }

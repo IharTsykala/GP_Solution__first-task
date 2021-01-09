@@ -3,6 +3,11 @@ import { Box, Avatar, Typography } from "@material-ui/core"
 import EditIcon from "@material-ui/icons/Edit"
 import CloseIcon from "@material-ui/icons/Close"
 import { newsInterface } from "../../Redux/InterfacesEntity/news.interface"
+import {
+  toggleModalNews,
+  setChosenItem,
+  removeItemByID,
+} from "../../Redux/store/news/news.actions"
 
 type NewsBoxProps = {
   item: newsInterface,
@@ -10,6 +15,14 @@ type NewsBoxProps = {
 }
 
 const NewsBox: React.FunctionComponent<NewsBoxProps> = ({ item, dispatch }) => {
+  const handleClickEdit = (id) => {
+    dispatch(toggleModalNews()), dispatch(setChosenItem(id))
+  }
+
+  const handleClickRemove = (id) => {
+    dispatch(removeItemByID(id))
+  }
+
   return (
     <Box component={"div"} className={"news-box"}>
       <Box component={"div"} className={"news-box__image"}>
@@ -27,8 +40,16 @@ const NewsBox: React.FunctionComponent<NewsBoxProps> = ({ item, dispatch }) => {
           </Typography>
         </Box>
         <Box component={"div"} className={"edit-tools edit-tools_right"}>
-          <EditIcon />
-          <CloseIcon />
+          <EditIcon
+            onClick={() => {
+              handleClickEdit(item.id)
+            }}
+          />
+          <CloseIcon
+            onClick={() => {
+              handleClickRemove(item.id)
+            }}
+          />
         </Box>
       </Box>
     </Box>
