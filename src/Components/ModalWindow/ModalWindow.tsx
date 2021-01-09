@@ -1,64 +1,40 @@
 import React from "react"
 import { Box, Typography } from "@material-ui/core"
-import { setModalValueInReducer } from "../../Redux/store/Modal/Modal.action"
+import { newsInterface } from "../../Redux/InterfacesEntity/news.interface"
 import { connect } from "react-redux"
+import { toggleModalNews } from "../../Redux/store/news/news.actions"
 
 type ModalWindowProps = {
-  locale: string,
-  fontSize: boolean,
-  modalValue: boolean,
-  countryForModalWindow: {},
+  id: number,
+  modalNewsToggle: boolean,
+  chosenNews: newsInterface,
+
   dispatch: any,
 }
 
 const ModalWindow: React.FunctionComponent<ModalWindowProps> = ({
-  locale,
-  fontSize,
-  modalValue,
-  countryForModalWindow,
+  id,
+  modalNewsToggle,
+  chosenNews,
+
   dispatch,
 }) => {
   return (
     <>
-      {modalValue && (
+      {modalNewsToggle && (
         <Box
           component={"div"}
           className={`modal__window__container`}
-          onClick={(e) => dispatch(setModalValueInReducer(false))}
-        >
-          <Typography
-            variant="h4"
-            className={`modal__window__close_text ${
-              (fontSize && "big_font_size") || "normal_font_size"
-            }`}
-          >
-            {(locale === "En" && "Click here to close the modal window") ||
-              "Кликните здесь что бы закрыть модальное окно"}
-          </Typography>
-          <Box
-            component={"div"}
-            className={"modal__window__container__info"}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <pre>
-              <code
-                className={(fontSize && "big_font_size") || "normal_font_size"}
-              >
-                {JSON.stringify(countryForModalWindow, null, 2)}
-              </code>
-            </pre>
-          </Box>
-        </Box>
+          onClick={(e) => dispatch(toggleModalNews())}
+        ></Box>
       )}
     </>
   )
 }
 
 const mapStateToProps = (state: any) => ({
-  locale: state.locale.locale,
-  fontSize: state.styles.fontSize,
-  modalValue: state.modal.modalValue,
-  countryForModalWindow: state.request.countryForModalWindow,
+  modalNewsToggle: state.news.modalNewsToggle,
+  chosenNews: state.news.chosenNews,
 })
 
 export default connect(mapStateToProps)(ModalWindow)

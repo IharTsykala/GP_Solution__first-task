@@ -5,7 +5,7 @@ import { Action } from "../../interfacesAction/action.interface"
 export interface State {  
   catalogNews: [newsInterface];
   countNewsID: number;
-  modalNews: boolean;
+  modalNewsToggle: boolean;
   chosenNews: newsInterface  
 }
 
@@ -13,7 +13,7 @@ const initialState: State = {
   // eslint-disable-next-line prettier/prettier
   catalogNews: [{} as newsInterface],
   countNewsID: 0,
-  modalNews: false,
+  modalNewsToggle: false,
   chosenNews: {} as newsInterface,
 }
 
@@ -35,7 +35,7 @@ export const newsReducer = (
   case ActionTypes.TOGGLE_MODAL_NEWS:
     return {
       ...state,
-      modalNews: !state.modalNews
+      modalNewsToggle: !state.modalNewsToggle
     }
   case ActionTypes.SET_CHOSEN_ITEM:
     const chosenItem = state.catalogNews.find(item=>item.id === action.payload)
