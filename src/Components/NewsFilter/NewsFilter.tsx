@@ -20,7 +20,7 @@ const NewsFilter: React.FunctionComponent<NewsFilterProps> = ({
   }, [dispatch])
 
   return (
-    <Box component={"div"} className={"catalog"}>
+    <Box component={"div"} className={"news-filter-container"}>
       {/* <FormControlLabel
         control={
           <Checkbox
