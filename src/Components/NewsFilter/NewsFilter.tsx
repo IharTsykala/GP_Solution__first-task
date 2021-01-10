@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import {
   Box,
   FormControlLabel,
@@ -9,7 +9,11 @@ import {
 import SearchIcon from "@material-ui/icons/Search"
 // import { getCatalogByDay } from "../../Redux/store/Photo/Photo.actions"
 import { connect } from "react-redux"
-import { getNews } from "../../Redux/store/news/news.actions"
+import {
+  getNews,
+  setCurrentFilterNews,
+  setEmptyFilterNews,
+} from "../../Redux/store/news/news.actions"
 
 type NewsFilterProps = {
   //   currentDate: Date,
@@ -22,8 +26,6 @@ const NewsFilter: React.FunctionComponent<NewsFilterProps> = ({
   //   catalogValue,
   dispatch,
 }) => {
-  const [stateValue, setStateValue] = useState("")
-
   useEffect(() => {
     dispatch(getNews(new Date("2020-12-01")))
   }, [dispatch])
@@ -31,9 +33,9 @@ const NewsFilter: React.FunctionComponent<NewsFilterProps> = ({
   const [stateValue, setStateValue] = useState("")
   const handlerInputFilter = (e: any) => {
     setStateValue(e.target.value)
-    if (e.target.value.length > 2)
-      dispatch(setCurrentFilter(e.target.value))
-    else dispatch(setEmptyFilter())
+    if (e.target.value.length > 1)
+      dispatch(setCurrentFilterNews(e.target.value))
+    else dispatch(setEmptyFilterNews())
   }
 
   return (

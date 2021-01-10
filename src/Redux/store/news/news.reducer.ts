@@ -12,7 +12,7 @@ export interface State {
 
 const initialState: State = {    
   catalogNews: [{} as newsInterface],
-  catalogFilterNews: [{} as newsInterface],
+  reserveCatalogNews: [{} as newsInterface],
   countNewsID: 0,
   modalNewsToggle: null,
   chosenNews: {} as newsInterface,
@@ -26,7 +26,8 @@ export const newsReducer = (
   case ActionTypes.SET_NEWS_IN_STORE:
     return {
       ...state,
-      catalogNews: action.payload
+      catalogNews: action.payload,
+      reserveCatalogNews: action.payload
     }
   case ActionTypes.SET_COUNT_NEWS_ID:
     return {
@@ -63,18 +64,17 @@ export const newsReducer = (
       catalogNews:  [action.payload, ...state.catalogNews]
     }
   case ActionTypes.SET_CURRENT_FILTER_NEWS:
-    const currentFilterNews = state.catalogNews.filter(item=> item.title.indexOf(action.payload)!==-1)
-    const reserveCatalog = state.catalogNews.slice()
+    const currentFilterNews = state.reserveCatalogNews
+      .filter(item=> item.title.toLowerCase().indexOf(action.payload.toLowerCase())!==-1)    
     return {
-      ...state,
-      reserveCatalogNews: reserveCatalog,
+      ...state,      
       catalogNews:  currentFilterNews,
     }
-  case ActionTypes.SET_EMPTY_FILTER_NEWS:
-    const catalogWithOutFilter
+  case ActionTypes.SET_EMPTY_FILTER_NEWS: 
+    const emptyFilter =  state.reserveCatalogNews.slice()  
     return {
       ...state,
-      catalogNews:  [action.payload, ...state.catalogNews]
+      catalogNews:emptyFilter,
     }
   default:   
     return state
