@@ -5,15 +5,14 @@ import { Action } from "../../interfacesAction/action.interface"
 export interface State {  
   catalogNews: [newsInterface];
   countNewsID: number;
-  modalNewsToggle: boolean;
+  modalNewsToggle: string | null;
   chosenNews: newsInterface  
 }
 
-const initialState: State = {  
-  // eslint-disable-next-line prettier/prettier
+const initialState: State = {    
   catalogNews: [{} as newsInterface],
   countNewsID: 0,
-  modalNewsToggle: false,
+  modalNewsToggle: null,
   chosenNews: {} as newsInterface,
 }
 
@@ -32,10 +31,10 @@ export const newsReducer = (
       ...state,
       countNewsID: action.payload
     }
-  case ActionTypes.TOGGLE_MODAL_NEWS:
+  case ActionTypes.TOGGLE_MODAL_NEWS:       
     return {
       ...state,
-      modalNewsToggle: !state.modalNewsToggle
+      modalNewsToggle: action.payload
     }
   case ActionTypes.SET_CHOSEN_ITEM:
     const chosenItem = state.catalogNews.find(item=>item.id === action.payload)
@@ -56,12 +55,12 @@ export const newsReducer = (
       catalogNews: [...state.catalogNews.slice(0, indexNews),
         action.payload, ...state.catalogNews.slice(indexNews+1)]
     }
-  case ActionTypes.ADD_NEWS_IN_CATALOG:    
+  case ActionTypes.ADD_NEWS_IN_CATALOG:      
     return {
       ...state,
-      catalogNews:  [...state.catalogNews, action.payload]
+      catalogNews:  [action.payload, ...state.catalogNews]
     }  
-  default:
+  default:   
     return state
   }
 }

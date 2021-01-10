@@ -7,8 +7,8 @@ export const ActionTypes = {
   SET_COUNT_NEWS_ID: "[News] Set count news id",
 
   TOGGLE_MODAL_NEWS: "[News] Toggle modal news",
-  SET_CHOSEN_ITEM: "[News] set chosen item",
-  REMOVE_ITEM_BY_ID: "[News] set item by id",
+  SET_CHOSEN_ITEM: "[News] Set chosen item",
+  REMOVE_ITEM_BY_ID: "[News] Set item by id",
 
   EDIT_NEWS_BY_ID: "[News] Edit news by id",
   ADD_NEWS_IN_CATALOG: "[News] Add news in catalog",
@@ -33,8 +33,9 @@ export const setCountNewsID = (amount: number): Action<number> => ({
   payload: amount,
 })
 
-export const toggleModalNews = () => ({
+export const toggleModalNews = (status: string | null): Action<any> => ({
   type: ActionTypes.TOGGLE_MODAL_NEWS,
+  payload: status,
 })
 
 export const setChosenItem = (id: number): Action<number> => ({
@@ -54,9 +55,7 @@ export const editNewsByID = (
   payload: itemNews,
 })
 
-export const addNewsInCatalog = (
-  itemNews: newsInterface
-): Action<newsInterface> => ({
+export const addNewsInCatalog = (itemNews: newsInterface): Action<any> => ({
   type: ActionTypes.ADD_NEWS_IN_CATALOG,
   payload: itemNews,
 })

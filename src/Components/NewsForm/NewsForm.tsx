@@ -1,55 +1,58 @@
 import React from "react"
 import { Formik } from "formik"
-import * as Yup from "yup"
-import { connect } from "react-redux"
-
 import NewsFormRender from "./NewsFormRender/NewsFormRender"
 import {
   NewsFormButtons,
   NewsFormModes,
 } from "../../shared/constants/user-from-view-mode.enum"
 import { newsInterface } from "../../Redux/InterfacesEntity/news.interface"
+import getDate from "../../services/getDate"
+import {
+  editNewsByID,
+  addNewsInCatalog,
+  toggleModalNews,
+  setCountNewsID,
+} from "../../Redux/store/news/news.actions"
 
 type NewsFormProps = {
-  news: newsInterface,
-  submitHandler: any,
-  namePage: NewsFormButtons,
-  nameButton: NewsFormModes,
+  chosenNews: newsInterface,
+  modalNewsToggle: string | null,
+  countNewsID: number,
+  dispatch: any,
 }
 
 const NewsForm: React.FC<NewsFormProps> = ({
-  news,
-  submitHandler,
-  namePage,
-  nameButton,
+  chosenNews,
+  modalNewsToggle,
+  countNewsID,
+  dispatch,
 }) => {
+  const idNews = chosenNews.id || countNewsID + 1
+  const editStatus = modalNewsToggle === NewsFormModes.EditNews
+
   return (
-    <Formik
-      initialValues={{
-        titleNews: "",
-        dateNews: "",
-        descriptionNews: "",
-        urlNews: "",
-      }}
-      validationSchema={Yup.object({
-        titleNews: Yup.string().max(15, "Must be 15 characters or less"),
-        // .required("You need fill this field"),
-        dateNews: Yup.string().max(10, "Must be 10 characters or less"),
-        descriptionNews: Yup.string().max(10, "Must be 10 characters or less"),
-        urlNews: Yup.string().email("Invalid email address"),
-        // phone: Yup.string().phone<string>("Invalid email address")
-      })}
-      onSubmit={(values: {}) => {
-        submitHandler(news ? news.id : undefined, values)
-      }}
-    >
-      <NewsFormRender news={news} namePage={namePage} nameButton={nameButton} />
-    </Formik>
+    <>
+      <Formik
+        initialValues={{
+          title: editStatus ? chosenNews.title : "",
+          date: editStatus ? chosenNews.date : getDate(new Date()),
+          explanation: editStatus ? chosenNews.explanation : "",
+          url: editStatus ? chosenNews.url : "",
+        }}
+        onSubmit={(values: any) => {
+          if (modalNewsToggle === NewsFormModes.EditNews)
+            dispatch(editNewsByID({ ...values, id: idNews }))
+          if (modalNewsToggle === NewsFormModes.AddNews) {
+            dispatch(addNewsInCatalog({ ...values, id: idNews }))
+            dispatch(setCountNewsID(countNewsID + 1))
+          }
+          dispatch(toggleModalNews(null))
+        }}
+      >
+        <NewsFormRender modalNewsToggle={modalNewsToggle} />
+      </Formik>
+    </>
   )
 }
 
-const mapStateToProps = (state: any) => ({
-  user: state.user.user,
-})
-
-export default connect(mapStateToProps)(NewsForm)
+export default NewsForm

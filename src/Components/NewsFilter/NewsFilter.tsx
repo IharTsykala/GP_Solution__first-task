@@ -1,5 +1,11 @@
 import React, { useEffect } from "react"
-import { Box, FormControlLabel, Checkbox, Toolbar, InputBase } from "@material-ui/core"
+import {
+  Box,
+  FormControlLabel,
+  Checkbox,
+  Toolbar,
+  InputBase,
+} from "@material-ui/core"
 import SearchIcon from "@material-ui/icons/Search"
 // import { getCatalogByDay } from "../../Redux/store/Photo/Photo.actions"
 import { connect } from "react-redux"
@@ -22,7 +28,7 @@ const NewsFilter: React.FunctionComponent<NewsFilterProps> = ({
 
   return (
     <Box component={"div"} className={"news-filter-container"}>
-      <Toolbar className={"header__request__container"}>
+      <Toolbar>
         <SearchIcon
         // className={"header__request__container__search_icon"}
         // onClick={() => handlerDispatchRequest()}

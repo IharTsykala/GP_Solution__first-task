@@ -16,7 +16,7 @@ type NewsBoxProps = {
 
 const NewsBox: React.FunctionComponent<NewsBoxProps> = ({ item, dispatch }) => {
   const handleClickEdit = (id: number) => {
-    dispatch(toggleModalNews())
+    dispatch(toggleModalNews("Edit News"))
     dispatch(setChosenItem(id))
   }
 
@@ -26,13 +26,21 @@ const NewsBox: React.FunctionComponent<NewsBoxProps> = ({ item, dispatch }) => {
 
   return (
     <Box component={"div"} className={"news-box"}>
-      <Box component={"div"} className={"news-box__image"}>
-        <Avatar variant={"rounded"} alt={item.title} src={item.url} />
+      <Box component={"div"} className={"news-box__image-container"}>
+        <Avatar
+          className={"news-box__image-item"}
+          variant={"rounded"}
+          alt={item.title}
+          src={item.url}
+        />
       </Box>
       <Box component={"div"} className={"news-box__description-container"}>
         <Box component={"div"} className={"news-box__description-header"}>
           <Typography variant="h6" gutterBottom>
             {item.title}
+          </Typography>
+          <Typography variant="h6" gutterBottom>
+            {item.date}
           </Typography>
         </Box>
         <Box component={"div"} className={"news-box__description-main"}>

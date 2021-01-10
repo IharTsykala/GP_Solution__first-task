@@ -16,7 +16,7 @@ const NewsCatalog: React.FunctionComponent<NewsCatalogProps> = ({
   dispatch,
 }) => {
   const handleClickAddItem = () => {
-    dispatch(toggleModalNews())
+    dispatch(toggleModalNews("Add News"))
   }
   return (
     <Box component={"div"} className={"news-catalog-container"}>
@@ -27,14 +27,21 @@ const NewsCatalog: React.FunctionComponent<NewsCatalogProps> = ({
             <NewsBox key={index + 1} item={item} dispatch={dispatch} />
           ))}
       </List>
-      <Button
-        // variant={(currentRequest && "contained") || "text"}
-        // color="primary"
-        onClick={() => dispatch(handleClickAddItem())}
-        // className={(fontSize && "big_font_size") || "normal_font_size"}
+      <Box
+        component={"div"}
+        className={"news-catalog-container__tools-container"}
       >
-        <Typography variant="button">{"ADD NEWS"}</Typography>
-      </Button>
+        <Button
+          // variant={(currentRequest && "contained") || "text"}
+          // color="primary"
+          onClick={() => handleClickAddItem()}
+          className={"button button_max"}
+        >
+          <Typography className={"button__name"} variant="button">
+            {"ADD NEWS"}
+          </Typography>
+        </Button>
+      </Box>
     </Box>
   )
 }
