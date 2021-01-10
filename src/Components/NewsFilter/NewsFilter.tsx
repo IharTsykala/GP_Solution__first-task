@@ -22,9 +22,19 @@ const NewsFilter: React.FunctionComponent<NewsFilterProps> = ({
   //   catalogValue,
   dispatch,
 }) => {
+  const [stateValue, setStateValue] = useState("")
+
   useEffect(() => {
     dispatch(getNews(new Date("2020-12-01")))
   }, [dispatch])
+
+  const [stateValue, setStateValue] = useState("")
+  const handlerInputFilter = (e: any) => {
+    setStateValue(e.target.value)
+    if (e.target.value.length > 2)
+      dispatch(setCurrentFilter(e.target.value))
+    else dispatch(setEmptyFilter())
+  }
 
   return (
     <Box component={"div"} className={"news-filter-container"}>
@@ -34,19 +44,19 @@ const NewsFilter: React.FunctionComponent<NewsFilterProps> = ({
         // onClick={() => handlerDispatchRequest()}
         />
         <InputBase
-        // value={inputValue}
-        // placeholder={
-        //   (!currentRequestId &&
-        //     ((locale === "En" && "Chose request") || "Выберите запрос")) ||
-        //   (locale === "En" && "Input data") ||
-        //   "Введите данные"
-        // }
-        // className={`header__request__container__input ${
-        //   (fontSize && "big_font_size") || "normal_font_size"
-        // }`}
-        // disabled={(!currentRequestId && true) || false}
-        // onInput={(e) => handlerInputSearchBox(e)}
-        // onKeyPress={(e) => handlerDispatchRequest(e)}
+          value={stateValue}
+          // placeholder={
+          //   (!currentRequestId &&
+          //     ((locale === "En" && "Chose request") || "Выберите запрос")) ||
+          //   (locale === "En" && "Input data") ||
+          //   "Введите данные"
+          // }
+          // className={`header__request__container__input ${
+          //   (fontSize && "big_font_size") || "normal_font_size"
+          // }`}
+          // disabled={(!currentRequestId && true) || false}
+          onInput={(e) => handlerInputFilter(e)}
+          // onKeyPress={(e) => handlerDispatchRequest(e)}
         />
       </Toolbar>
     </Box>

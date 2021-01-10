@@ -4,6 +4,7 @@ import { Action } from "../../interfacesAction/action.interface"
 
 export interface State {  
   catalogNews: [newsInterface];
+  reserveCatalogNews: [newsInterface];
   countNewsID: number;
   modalNewsToggle: string | null;
   chosenNews: newsInterface  
@@ -11,6 +12,7 @@ export interface State {
 
 const initialState: State = {    
   catalogNews: [{} as newsInterface],
+  catalogFilterNews: [{} as newsInterface],
   countNewsID: 0,
   modalNewsToggle: null,
   chosenNews: {} as newsInterface,
@@ -59,7 +61,21 @@ export const newsReducer = (
     return {
       ...state,
       catalogNews:  [action.payload, ...state.catalogNews]
-    }  
+    }
+  case ActionTypes.SET_CURRENT_FILTER_NEWS:
+    const currentFilterNews = state.catalogNews.filter(item=> item.title.indexOf(action.payload)!==-1)
+    const reserveCatalog = state.catalogNews.slice()
+    return {
+      ...state,
+      reserveCatalogNews: reserveCatalog,
+      catalogNews:  currentFilterNews,
+    }
+  case ActionTypes.SET_EMPTY_FILTER_NEWS:
+    const catalogWithOutFilter
+    return {
+      ...state,
+      catalogNews:  [action.payload, ...state.catalogNews]
+    }
   default:   
     return state
   }

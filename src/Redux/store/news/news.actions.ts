@@ -13,6 +13,9 @@ export const ActionTypes = {
   EDIT_NEWS_BY_ID: "[News] Edit news by id",
   ADD_NEWS_IN_CATALOG: "[News] Add news in catalog",
 
+  SET_CURRENT_FILTER_NEWS: "[News] Set current filter news",
+  SET_EMPTY_FILTER_NEWS: "[News] Set empty filter news",
+
   GET_FAILURE: "[getFailure] Get failure",
 }
 
@@ -58,6 +61,15 @@ export const editNewsByID = (
 export const addNewsInCatalog = (itemNews: newsInterface): Action<any> => ({
   type: ActionTypes.ADD_NEWS_IN_CATALOG,
   payload: itemNews,
+})
+
+export const setCurrentFilterNews = (value: string): Action<string> => ({
+  type: ActionTypes.SET_CURRENT_FILTER_NEWS,
+  payload: value,
+})
+
+export const setEmptyFilterNews = (): Action<any> => ({
+  type: ActionTypes.SET_EMPTY_FILTER_NEWS,
 })
 
 export const getFailureAction = (error?: any): Action<any> => ({
