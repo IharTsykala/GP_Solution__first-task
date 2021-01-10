@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from "redux"
 import { composeWithDevTools } from "redux-devtools-extension"
 import rootReducer from "./Redux/index"
 import newsSaga from "./Redux/store/news/news.sagas"
-import { AppBar, Box } from "@material-ui/core"
+import { AppBar, Box, Typography } from "@material-ui/core"
 import ScopedCssBaseline from "@material-ui/core/ScopedCssBaseline"
 import ModalWindow from "./Components/ModalWindow/ModalWindow"
 
@@ -27,7 +27,11 @@ const App: React.FC = () => (
     <ScopedCssBaseline>
       <Box component="div" className={"wrapper"}>
         <ModalWindow />
-        <AppBar className={"header"}>{"Header"}</AppBar>
+        <AppBar className={"navbar"}>
+          <Typography variant="h4" component="h2" gutterBottom>
+            {"Navbar"}
+          </Typography>
+        </AppBar>
         <Box component="div" className={"main"}>
           <NewsPage />
         </Box>

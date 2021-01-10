@@ -13,11 +13,13 @@
   -ms-grid-rows: 5vh 95vh;
       grid-template-rows: 5vh 95vh;
   position: relative;
-  background-color: aqua;
 }
 
-.header {
+.navbar {
   position: relative !important;
+  display: -ms-grid !important;
+  display: grid !important;
+  justify-items: center !important;
 }
 
 .main {
@@ -33,6 +35,10 @@
       grid-template-columns: 2fr 8fr;
 }
 
+.news-filter-container {
+  border-right: 1px solid #5656fc;
+}
+
 .news-catalog-container {
   height: 95vh;
   display: -ms-grid;
@@ -42,7 +48,6 @@
 }
 
 .news-catalog-container .news-catalog-container__tools-container {
-  background-color: blueviolet;
   display: -ms-grid;
   display: grid;
   -webkit-box-pack: center;
@@ -57,10 +62,11 @@
   display: -ms-grid;
   display: grid;
   justify-items: center;
+  row-gap: 1%;
 }
 
 .news-box {
-  width: 80%;
+  width: 90%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 30% 70%;
@@ -96,13 +102,47 @@
       grid-template-columns: 70% 30%;
 }
 
+.news-box .news-box__description-container .news-box__description-header .news-box__title {
+  font-size: 18px !important;
+}
+
+@media (max-height: 1224px) {
+  .news-box .news-box__description-container .news-box__description-header .news-box__title {
+    font-size: 12px !important;
+  }
+}
+
+@media (max-height: 640px) {
+  .news-box .news-box__description-container .news-box__description-header .news-box__title {
+    font-size: 8px !important;
+  }
+}
+
+@media (max-height: 1224px) {
+  .news-box .news-box__description-container .news-box__description-header .news-box__date {
+    font-size: 12px;
+  }
+}
+
+@media (max-height: 640px) {
+  .news-box .news-box__description-container .news-box__description-header .news-box__date {
+    font-size: 8px;
+  }
+}
+
 .news-box .news-box__description-container .news-box__description-main {
-  padding: 1% 0;
+  padding: 1 0;
   overflow: hidden;
 }
 
+@media (max-height: 1224px) {
+  .news-box .news-box__description-container .news-box__description-main {
+    font-size: 10px !important;
+  }
+}
+
 .news-box .news-box__description-container .edit-tools {
-  padding: 0 1%;
+  padding: 0 1;
 }
 
 .news-box .news-box__description-container .edit-tools_right {

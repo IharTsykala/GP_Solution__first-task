@@ -33,6 +33,8 @@ const NewsCatalog: React.FunctionComponent<NewsCatalogProps> = ({
         <Button
           onClick={() => handleClickAddItem()}
           className={"button button_max"}
+          variant={"contained"}
+          color={"primary"}
         >
           <Typography className={"button__name"} variant="button">
             {"ADD NEWS"}

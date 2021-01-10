@@ -36,10 +36,10 @@ const NewsBox: React.FunctionComponent<NewsBoxProps> = ({ item, dispatch }) => {
       </Box>
       <Box component={"div"} className={"news-box__description-container"}>
         <Box component={"div"} className={"news-box__description-header"}>
-          <Typography variant="h6" gutterBottom>
+          <Typography className={"news-box__title"} variant="h6" gutterBottom>
             {item.title}
           </Typography>
-          <Typography variant="h6" gutterBottom>
+          <Typography className={"news-box__date"} variant="h6" gutterBottom>
             {item.date}
           </Typography>
         </Box>
