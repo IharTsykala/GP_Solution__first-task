@@ -6,16 +6,13 @@ import { toggleModalNews } from "../../Redux/store/news/news.actions"
 import NewsForm from "../../Components/NewsForm/NewsForm"
 
 type ModalWindowProps = {
-  // id: number,
   modalNewsToggle: string | null,
   chosenNews: newsInterface,
   countNewsID: number,
-
   dispatch: any,
 }
 
 const ModalWindow: React.FunctionComponent<ModalWindowProps> = ({
-  // id,
   modalNewsToggle,
   chosenNews,
   countNewsID,

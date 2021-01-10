@@ -2,7 +2,6 @@ import React from "react"
 import { Box, List, Typography, Button } from "@material-ui/core"
 import { connect } from "react-redux"
 import NewsBox from "../NewsBox/NewsBox"
-// import { useId } from "react-id-generator"
 import { newsInterface } from "../../Redux/InterfacesEntity/news.interface"
 import { toggleModalNews } from "../../Redux/store/news/news.actions"
 
@@ -32,8 +31,6 @@ const NewsCatalog: React.FunctionComponent<NewsCatalogProps> = ({
         className={"news-catalog-container__tools-container"}
       >
         <Button
-          // variant={(currentRequest && "contained") || "text"}
-          // color="primary"
           onClick={() => handleClickAddItem()}
           className={"button button_max"}
         >

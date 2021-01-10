@@ -58,7 +58,9 @@ export const editNewsByID = (
   payload: itemNews,
 })
 
-export const addNewsInCatalog = (itemNews: newsInterface): Action<any> => ({
+export const addNewsInCatalog = (
+  itemNews: newsInterface
+): Action<newsInterface> => ({
   type: ActionTypes.ADD_NEWS_IN_CATALOG,
   payload: itemNews,
 })

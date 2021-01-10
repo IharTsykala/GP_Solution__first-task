@@ -1,10 +1,7 @@
 import React from "react"
 import { Formik } from "formik"
 import NewsFormRender from "./NewsFormRender/NewsFormRender"
-import {
-  NewsFormButtons,
-  NewsFormModes,
-} from "../../shared/constants/user-from-view-mode.enum"
+import { NewsFormModes } from "../../shared/constants/user-from-view-mode.enum"
 import { newsInterface } from "../../Redux/InterfacesEntity/news.interface"
 import getDate from "../../services/getDate"
 import {
