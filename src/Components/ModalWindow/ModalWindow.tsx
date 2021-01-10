@@ -26,7 +26,14 @@ const ModalWindow: React.FunctionComponent<ModalWindowProps> = ({
           component={"div"}
           className={`modal__window__container`}
           onClick={(e) => dispatch(toggleModalNews())}
-        ></Box>
+        >
+          <Box></Box>
+          <Box></Box>
+          <Box>
+            
+          </Box>
+
+        </Box>
       )}
     </>
   )
