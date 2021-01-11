@@ -185,4 +185,21 @@
   background: white;
   overflow: auto;
 }
+
+.form-news {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[4];
+      grid-template-rows: repeat(4, 1fr);
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  justify-items: center;
+  height: 45vh;
+}
+
+.form-news input {
+  width: 40vw;
+  height: 5vh;
+  margin: 1vh auto;
+}
 /*# sourceMappingURL=App.css.map */

@@ -123,7 +123,6 @@ $bigPadding: 95vh;
     display: grid;
     justify-content: center;
   }
-    
 }
 
 .modal-news-container {
@@ -134,6 +133,18 @@ $bigPadding: 95vh;
 	right: 20vw;
 	z-index: 20000;
 	background: white;
-	overflow: auto;	
+  overflow: auto;
 }
 
+.form-news {
+  display: grid ;
+  grid-template-rows: repeat(4, 1fr) ;
+  grid-template-columns: 1fr ;
+  justify-items: center ;
+  height: 45vh ;  
+  input {
+    width: 40vw ;
+    height: 5vh ; 
+    margin: 1vh auto ;    
+  }
+}

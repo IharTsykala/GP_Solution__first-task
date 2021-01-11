@@ -12,7 +12,7 @@ const NewsFormRender: React.FC<NewsFormRenderProps> = ({ modalNewsToggle }) => {
   const classes = useStyles()
 
   return (
-    <Form className={`${classes.root}`}>
+    <Form className={`${classes.root} form-news`}>
       <Field name="title" label="title" component={TextField} />
       <ErrorMessage name="title" />
       <Field name="date" label="date" disabled component={TextField} />
